@@ -9,18 +9,16 @@ from dotenv import load_dotenv
 
 from users.db.models import User
 from users.schemas.schemas import UserCreate
-import dependencies
+from load_env import secret_key
+from common.utils import decode_token
+from dependencies import get_db
 
 
 
-users_router = APIRouter()
-
-load_dotenv()
-secret_key = os.getenv("SECRET_KEY")
-
+users_router = APIRouter(prefix="/users")
 
 @users_router.post("/register")
-async def register(user: UserCreate, db: Session = Depends(dependencies.get_db)):
+async def register(user: UserCreate, db: Session = Depends(get_db)):
     existing_user = db.query(User).filter(User.email == user.email).first()
     if existing_user:
         raise HTTPException(status_code=400, detail='User already registred.')
@@ -39,7 +37,7 @@ async def register(user: UserCreate, db: Session = Depends(dependencies.get_db))
 
 @users_router.get("/check-info")
 async def check_info_from_token(token: str):
-    return dependencies.decode_token(token)
+    return decode_token(token)
 
 
 # @users_router.post("/create-admin")
