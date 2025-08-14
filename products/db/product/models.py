@@ -2,11 +2,7 @@ from sqlalchemy import Column, Integer, Float, String, Text, ForeignKey, Table
 from sqlalchemy.orm import relationship
 from db.base import Base
 
-# i dont like oop and orm
-# i dont like oop and orm
-# i dont like oop and orm
-# i dont like oop and orm
-# i dont like oop and orm
+
 
 product_tags = Table(
     'product_tags',

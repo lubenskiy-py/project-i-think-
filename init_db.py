@@ -4,6 +4,9 @@ from db.base import Base
 import users.db.models
 import products.db.product.models
 import products.db.category.models
+import chat.db.chat.model
+import chat.db.message.model
+
 
 
 DATABASE_URL = "sqlite:///db/database.db"
