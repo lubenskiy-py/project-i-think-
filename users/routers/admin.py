@@ -18,6 +18,7 @@ from users.services.admins_services import (
 
 admins_router = APIRouter(prefix="/admins")
 
+
 @admins_router.post("/create-super-admin")
 async def create_super_admin_endpoint(user: UserBase, db: Session = Depends(get_db)):
     return await create_super_admin(user, db)

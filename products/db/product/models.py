@@ -1,5 +1,6 @@
 from sqlalchemy import Column, Integer, Float, String, Text, ForeignKey, Table
 from sqlalchemy.orm import relationship
+
 from db.base import Base
 
 
@@ -10,6 +11,7 @@ product_tags = Table(
     Column('product_id', Integer, ForeignKey('products.id'), primary_key=True),
     Column('tag_id', Integer, ForeignKey('tags.id'), primary_key=True)
 )
+
 
 class Product(Base):
     __tablename__= 'products'

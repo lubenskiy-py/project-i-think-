@@ -1,6 +1,7 @@
 from fastapi import HTTPException, status
 from sqlalchemy import func, asc, desc
 from sqlalchemy.orm import joinedload
+
 from common.utils import decode_token, is_user
 from products.db.category.models import Category
 from products.db.product.models import Product, Tag
@@ -126,8 +127,8 @@ async def list_products(
         max_price: float = None,
         search: str = None,
         tags: list[str] = None,
-        sort_by: str = None,   # "price" or "title"
-        sort_order: str = "asc"  # "asc" or "desc"
+        sort_by: str = None,
+        sort_order: str = "asc"
 ):
     is_user(token)
 
